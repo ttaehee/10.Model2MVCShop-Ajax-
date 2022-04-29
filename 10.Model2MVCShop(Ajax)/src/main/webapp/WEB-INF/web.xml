@@ -51,19 +51,7 @@
 		    <load-on-startup>1</load-on-startup>
   </servlet>
   
-    <!-- //////////////////////////////////////////////////////////////////////////// 
-	  <servlet-mapping>
-	    <servlet-name>action</servlet-name>
-	    <url-pattern>*.do</url-pattern>
-	  </servlet-mapping>  
-	  ////////////////////////////////////////////////////////////////////////////-->
-	  
-	<!-- 	URI : / 형식  Servlet Mapping 
-			:: 이 형식은  dynamic contents 와 static contents  모든 요청을 처리할
-			:: 책임이 있다는 의미를 갖는다. 
-			
-			:: static contents 요청처리에 대한 설정 필요
-			   common-servlet.xml 참조 -->
+	<!-- 	URI : / 형식  Servlet Mapping -->
 	<servlet-mapping>
 	  <servlet-name>action</servlet-name>
 	  <url-pattern>/</url-pattern>

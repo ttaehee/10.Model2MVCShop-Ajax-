@@ -37,6 +37,7 @@
 					$("input:password").focus();
 					return;
 				}
+				console.log(pw);
 				
 				////////////////////////////////////////////////// 추가 , 변경된 부분 ////////////////////////////////////////////////////////////
 				//$("form").attr("method","POST").attr("action","/user/login").attr("target","_parent").submit();
@@ -55,6 +56,7 @@
 								password : pw
 							}),
 							success : function(JSONData , status) {
+								console.log("123");
 
 								//Debug...
 								//alert(status);
