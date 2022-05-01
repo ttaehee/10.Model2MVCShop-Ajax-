@@ -50,10 +50,9 @@
 	<select  id="getProductList"  parameterType="search"	resultMap="productSelectMap">
 	  	SELECT *
 	  	FROM (	SELECT inner_table.* , ROWNUM AS row_seq
-	  					FROM		(	 SELECT p.*, NVL(t.prod_no,0) no, t.tran_status_code
+	  					FROM		(	 SELECT p.*, t.tran_status_code
 	  					                 FROM product p, transaction t 
-	  					                 <where>
-										 t.prod_no(+)=p.prod_no
+	  					                 WHERE t.prod_no(+)=p.prod_no
 											<if test="searchCondition != null">
 												<if test="searchCondition == 0 and searchKeyword !='' ">
 										 			AND p.prod_no LIKE '%'||#{searchKeyword}||'%'
@@ -65,7 +64,6 @@
 										 			AND p.price LIKE '%'||#{searchKeyword}||'%'
 												</if>
 											</if>
-										</where>
 										ORDER BY p.prod_no ) inner_table
 						WHERE ROWNUM &lt;= #{endRowNum} )
 		WHERE row_seq BETWEEN #{startRowNum} AND #{endRowNum} 
