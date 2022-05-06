@@ -54,44 +54,32 @@
 		});
 		
 		 $( ".ct_list_pop td:nth-child(3)" ).on("click" , function() {
-				//Debug..
-				//alert(  $( this ).text().trim() );
-				//////////////////////////// 추가 , 변경된 부분 ///////////////////////////////////
-				//self.location ="/product/getProduct?menu=${menu}&prodNo="+$( this ).data("value");
-                ////////////////////////////////////////////////////////////////////////////////////////////
-				var prodNo = $(this).data("value");
-					$.ajax( 
-							{
-								url : "/product/json/getProduct/"+prodNo ,
-								method : "GET" ,
-								dataType : "json" ,
-								headers : {
-									"Accept" : "application/json",
-									"Content-Type" : "application/json"
-								},
-								success : function(JSONData , status) {
-
-									//Debug...
-									//alert(status);
-									//Debug...
-									//alert("JSONData : \n"+JSONData);
-									
-									var displayValue = "<h3>"
-																+"상품번호 : "+JSONData.prodNo+"<br/>"
-																+"상품명 : "+JSONData.prodName+"<br/>"
-																+"상품이미지 : "+JSONData.filName+"<br/>"
-																+"상품상세정보 : "+JSONData.prodDetail+"<br/>"
-																+"제조일자 : "+JSONData.manuDate+"<br/>"
-																+"가격 : "+JSONData.price+"<br/>"
-																+"등록일자 : "+JSONData.regDate+"<br/>"
-																+"</h3>";
-									//Debug...									
-									//alert(displayValue);
-									$("h3").remove();
-									$( "#"+prodNo+"" ).html(displayValue);
-								}				
-							});						
+			 var prodNo = $(this).data("value");
 				
+				$.ajax( 
+						{
+							url : "/product/json/getProduct/"+prodNo ,
+							method : "GET" ,
+							dataType : "json" ,
+							headers : {
+								"Accept" : "application/json",
+								"Content-Type" : "application/json"
+							},
+							success : function(JSONData , status) {
+
+								var displayValue = "<h6>"
+															+"상품번호 : "+JSONData.prodNo+"<br/>"
+															+"상품명 : "+JSONData.prodName+"<br/>"
+															+"상품이미지 : "+JSONData.fileName+"<br/>"
+															+"상품상세정보 : "+JSONData.prodDetail+"<br/>"
+															+"제조일자 : "+JSONData.manuDate+"<br/>"
+															+"가격 : "+JSONData.price+"<br/>"
+															+"등록일자 : "+JSONData.regDate+"<br/>"
+															+"</h6>";
+								$("h6").remove();
+								$( "#"+prodNo+"" ).html(displayValue);
+							}
+					});
 		});
 		
 		//==> UI 수정 추가부분  :  userId LINK Event End User 에게 보일수 있도록 
@@ -345,11 +333,10 @@
 		</td>	
 		</tr>
 		<tr>
-		<!-- //////////////////////////// 추가 , 변경된 부분 /////////////////////////////
-		<td colspan="11" bgcolor="D6D7D6" height="1"></td>
-		////////////////////////////////////////////////////////////////////////////////////////////  -->
-		<td id="${pro.prodNo}" colspan="11" bgcolor="D6D7D6" height="1"></td>
-		</tr>
+		    <!-- //////////////////////////// 추가 , 변경된 부분 /////////////////////////////
+			<td colspan="11" bgcolor="D6D7D6" height="1"></td>
+			////////////////////////////////////////////////////////////////////////////////////////////  -->
+			<td id="${pro.prodNo}" colspan="11" bgcolor="D6D7D6" height="1"></td>
 	</c:forEach>
 	
 	</table>
